@@ -1,0 +1,148 @@
+/*Works based off rulesets
+Selector: specifies which HTML elements the rule applies to
+Declaration Blocks: enclosed in curly braces
+Declaration: A single rule consisting of a CSS property and its corresponding value, separated by a colon.
+
+Ways to apply CSS:
+1. External style sheet - CSS rules are placed in separte file, this file linked to html document using the link tag within head section
+Pros: separation of concerns, reusability, caching, easier collaboration. Cons: additional HTTP request
+2. Internal style sheet - CSS rules are placed directly within HTML document head section enclosed <style> tags
+Pros: useful for single-page websites, or applying unique styles to a specific page. Cons: styles not reusable across multiple pages. 
+3. Inline styles: CSS delcerations are applied directly to a specific HTML element using style global attribute
+<p style="color: red; font-size: 16px;">This is an inline styled paragraph.</p>
+Pros: useful for applying highly specific styles
+*/
+
+/*Basic selectors: element(type), class, id */
+
+p {
+    line-height: 1.5;
+}
+div {
+    background-color: lightgray;
+}
+
+.alert{
+    color: red;
+    font-weight: bold;
+    border: 1px solid red;
+}
+.button-primary {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+#main-navigation { /*selects element with id=main-navigation*/
+    background-color:blue;
+}
+
+/*Attribute selectors: Target elements based on the presence or value of attributes, done with square brackets*/
+
+/*Selects all anchor elements with an href attribute, regardless of its value*/
+a[href] {
+    color: green;
+    text-decoration: underline;
+}
+
+a[href^="https"] { /*Selects anchor elements with href attribute that starts with "https"*/
+    color: darkgreen;
+}
+
+a[href$=".pdf"]::after { /*Selects anchor elements with href attribute that ends with ".pdf"*/
+    color: red;
+    content: " (PDF)";
+}
+
+input[type="text"] { /*Selects input elements with type attribute equal to "text"*/
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+img[alt*="logo"] { /*Selects image elements with alt attribute that contains the word "logo"*/
+    border: 2px solid blue;
+}   
+
+/*Psuedo-classes: target elements based on their state or position*/
+a:hover { /*Selects anchor elements when hovered over by the mouse*/
+    color: orange;
+    text-decoration: none;
+}
+
+input:focus { /*Selects input elements when they are focused (clicked or tabbed into)*/
+    border-color: blue;
+    outline: none;
+}
+
+p:first-child { /*Selects the first paragraph element that is the first child of its parent*/
+    font-weight: bold;
+}
+
+li:nth-child(odd) { /*Selects odd-numbered list items (1st, 3rd, 5th, etc.)*/
+    background-color: lightblue;
+}
+
+input[type="checkbox"]:checked + label { /*Selects checkbox input elements that are currently checked*/
+    text-decoration: line-through;
+}
+
+/*Psuedo-elements: Target specific parts of an element's content. Preceded by a double colon*/
+
+p::first-line { /*Selects the first line of a paragraph*/
+    font-weight: bold;
+    color: red;
+}
+
+p::first-letter { /*Selects the first letter of a paragraph*/
+    font-size: 200%;
+    color: blue;
+}
+
+.icon::before { /*Selects content before an element with class "icon"*/
+    content: "★";
+    color: gold;
+    margin-right: 5px;
+}
+
+input::placeholder { /*Selects the placeholder text of an input element*/
+    color: gray;
+    font-style: italic;
+}
+
+/*Combinators: combine multiple selectors to target  elemnts based on their relationship in the HTML structure*/
+
+/*Descendant combinator (space): selects elements that are descendants of anther alement*/
+
+.nav-menu a { /*Selects all anchor elements that are descendants of an element with class "nav-menu"*/
+    color: white;
+    text-decoration: none;
+}
+
+/*Child combinator (>) Selects elements that are direct children of another element*/
+ul > li { /*Selects list items that are direct children of an unordered list*/
+    margin-bottom: 5px;
+}
+
+/*Adjacent sibling combinator (+): selects an element that immediately follows another specified elemnt, sharing the same parent*/
+h1 + p { /*Selects the first paragraph element that immediately follows an h1 element*/
+    margin-top: 0;
+    font-style: italic;
+}
+
+/*General sibling combinator (~): selects elements that follow another specified element, sharing same parent*/
+h2 ~ p { /*Selects all paragraph elements that follow an h2 element, regardless of their position*/
+    color: gray;
+    font-size: 14px;
+}
+
+/*Grouping selectors (comma): apply the same ruleset to multiple selectors by separating them with a comma*/
+h1, h2, h3 { /*Selects all h1, h2, and h3 elements*/
+    font-family: Arial, sans-serif;
+    color: navy;
+}
+
+
+
+
