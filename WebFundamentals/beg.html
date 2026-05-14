@@ -59,5 +59,66 @@
     <p>This is a paragraph with a <span style="color: 
         red;">highlighted word.</span></p>
 </div>
+//Global attributes can be used on any HTML element. Ex: id(unique across entire document), class(grouping elements), style(used to apply inline CSS stles), title(provides advisory info about element, often displayed as tooltip when the user hovers over lement)
+<div id="main-content" class="content" style="background-color: lightblue;" title="Main content area">
+    <h2>Main Content</h2>
+    <p>This is the main content of the page.</p>
+</div>
+//Element-specific attribts, many attributes only apply to specific elements
+// a: href, target, rel
+// img: src, alt, width, height
+// input: type, name, value, placeholder
+// form: action, method
+// meta: charset, name, content
 
+//Boolean attributes: Don't requie a value, their presence is true, and absense is false. 
+<input type="checkbox" id="subscribe" name="subscribe" required checked> I agree
+<input type="text" name="username" value="Read Only User" readonly>
+<button type="submit" disabled>Submit</button>
+
+//Data attributes: A standard way to store custom data private to page or app within HTML elements. 
+//HTML forms
+//action: URL where form data should be sent when submitted
+//method: HTTP method to use when submitting form: GET - appends the form data to the URL in the action attribute, suitable for non-sensitive data
+// POST - sends the form data in the HTTP request body, suitable for sensitive data or large amounts of data 
+
+<form action="/submit-contact" method="POST">
+    <div>
+        <label for="nameInput">Name:</label> //provides caption for a form control, for attribute should match id of corresponding input element
+        <input type="text" id="nameInput" name="name" required> 
+    </div>
+    <div>
+        <label for="emailInput">Email:</label>
+        <input type="email" id="emailInput" name="email" required>
+    </div>
+    <div>
+        <label for="queryType">Query Type:</label>
+        <select id="queryType" name="queryType" required> //creates dropdown list
+            <option value="" selected>Select a query type</option> //defines an option, the value attribute specides the data sent upon submission, selected attribute for default selection
+            <option value="general">General Inquiry</option>
+            <option value="support">Support Request</option>
+            <option value="billing">Billing Question</option>
+        </select>
+    </div>
+    <div>
+        <label for="messageInput">Message:</label>
+        <textarea id="messageInput" name="message" rows="5" required></textarea> //Creates a multiline text input field, you can specify rows and cols attributes for initial size
+    </div>
+    <fieldset>
+        <legend>Newsletter:</legend>
+        //radio option allwos selecting one option from a group, name attribute groups the radio buttons together, value attribute specifies the data sent upon submission, checked attribute for default selection
+        <input type="radio" id="newsYes" name="newsletter" value="yes" checked>
+        <label for="newsYes">Yes, sign me up!</label>
+        <input type="radio" id="newsNo" name="newsletter" value="no">
+        <label for="newsNo">No, thanks.</label>
+    </fieldset>
+    <div>
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I agree to the terms and conditions</label>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+        <input type="reset" value="Reset"> //Resets all form fields to their initial values when clicked
+    </div>
+</form>>
 </html>
